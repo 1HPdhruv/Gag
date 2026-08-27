@@ -1,42 +1,83 @@
-# GaG - Grab & Go 🍔
-*SRM KTR's Premium Food Pre-ordering Application*
+# 🍔 Crave (GaG) - SRMIST Food Ordering App
 
-GaG (Grab & Go) is a native Android application designed to eliminate long queues and crowding at SRM Institute of Science and Technology, Kattankulathur (SRM KTR) food outlets.
+Welcome to the official repository for **Crave (GaG)**, a comprehensive food ordering and management application designed specifically for the SRMIST campus. 
 
-## Architecture & Tech Stack
-- **Architecture:** Clean Architecture + MVVM + MVI-style UiState.
-- **UI:** 100% Jetpack Compose (Material 3) with custom premium Design System.
-- **DI:** Dagger Hilt.
-- **Concurrency:** Kotlin Coroutines & Flows (StateFlow).
-- **Network:** Retrofit + OkHttp (Interfaces defined, currently using MockData implementation).
-- **Local DB:** Room (Entities and DAOs defined).
-- **Security:** EncryptedSharedPreferences (AES256_GCM).
-- **Navigation:** Jetpack Navigation Compose (Type-safe, nested graphs).
+This app streamlines the food ordering process by offering role-based access for Students, Vendors, and Administrators, providing a seamless experience from browsing menus to picking up orders.
 
-## Project Structure
-- `core/`: Common UI components, Theme, Result wrappers.
-- `domain/`: Models, UseCases, Repository Interfaces.
-- `data/`: DTOs, APIs, DAOs, Room DB, and robust Mock Repositories.
-- `feature/`: UI components organized by feature (auth, home, orders, vendor, admin).
-- `navigation/`: Central NavGraph routing.
+## ✨ Features
 
-## Development & Mock Mode
-The app is currently configured to run entirely in memory using robust **Mock Repositories** (`MockAuthRepository`, `MockOrderRepository`, etc.). This allows the entire UI/UX to be developed, tested, and demonstrated without needing a live backend.
+### 👨‍🎓 For Students / Users
+- **Browse Food Outlets:** Explore various food stalls and their menus available on campus.
+- **Smart Cart & Checkout:** Customize food items and add them to the cart for a quick checkout.
+- **Pickup Slots:** Schedule convenient pickup times to avoid long queues.
+- **Live Order Tracking:** Get real-time updates on your order status.
+- **Digital Tokens:** Secure QR code-based pickup tokens for easy collection.
+- **Favorites & History:** Reorder your favorite meals in just a few taps.
 
-### Mock Credentials
-- **Student:** `student@srmist.edu.in` / `student123`
-- **Vendor:** `vendor@srm.ac.in` / `vendor123`
-- **Admin:** `admin@srm.ac.in` / `admin123`
+### 🧑‍🍳 For Vendors
+- **Order Management:** View, accept, and process incoming orders efficiently.
+- **Menu Management:** Update food availability, variations, and prices in real-time.
+- **QR Scanner:** Quickly scan student pickup tokens to verify and hand over orders.
+- **Analytics Dashboard:** Track daily sales, popular items, and revenue.
 
-## Features Implemented
-- **Auth:** Role-based login (Student, Vendor, Admin) with JWT token management.
-- **Home/Search:** Outlet discovery, global food search with debouncing, category filtering.
-- **Cart & Checkout:** Multi-item cart, intelligent pickup slot selection (backend capacity logic mocked), payment method selection.
-- **Live Order Tracking:** Pulsing UI indicators, step-by-step progress tracking, QR code generation for pickup.
-- **Vendor Dashboard:** Real-time incoming order queue, accept/reject, mark as preparing/ready, and simulated QR scanning.
-- **Admin Dashboard:** System-wide stats, outlet enable/disable toggle.
+### 👨‍💻 For Administrators
+- **System Monitoring:** Oversee all platform activities and active outlets.
+- **User Management:** Manage permissions and roles across the platform.
+- **Global Settings:** Configure global pickup slots, tax rates, and policies.
 
-## Running the App
-1. Open the project in Android Studio.
-2. The project is fully compile-ready.
-3. Build and run on an emulator or physical device (API 26+).
+## 🛠️ Tech Stack
+
+This project is built using modern Android development practices:
+
+- **UI Framework:** [Jetpack Compose](https://developer.android.com/jetpack/compose) - fully declarative UI.
+- **Language:** [Kotlin](https://kotlinlang.org/)
+- **Architecture:** Clean Architecture with MVVM (Model-View-ViewModel)
+- **Dependency Injection:** [Dagger-Hilt](https://dagger.dev/hilt/)
+- **Backend & Database:** [Supabase](https://supabase.com/) (PostgreSQL, Realtime, Auth, Storage)
+- **Local Database:** [Room](https://developer.android.com/training/data-storage/room)
+- **Networking:** Retrofit / Ktor
+- **Async Programming:** Kotlin Coroutines & Flow
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Android Studio Ladybug (or latest)
+- JDK 17+
+- Supabase Project (with properly configured schemas and RLS policies)
+
+### Setup Instructions
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/1HPdhruv/Gag.git
+   ```
+
+2. **Configure Local Properties:**
+   Create a `local.properties` file in the root directory and add your Supabase credentials:
+   ```properties
+   SUPABASE_URL="your_supabase_project_url"
+   SUPABASE_ANON_KEY="your_supabase_anon_key"
+   ```
+
+3. **Run the Project:**
+   Open the project in Android Studio, sync Gradle, and run the app on an emulator or physical device.
+
+## 🗄️ Database Architecture
+
+The backend uses a structured relational database with robust Row Level Security (RLS) policies. You can find the database migrations and policies in the `supabase/migrations/` directory. 
+
+Key tables include:
+- `profiles`, `outlets`, `categories`, `food_items`
+- `orders`, `carts`, `payments`, `pickup_slots`
+
+## 🤝 Contributing
+
+Contributions are welcome! If you'd like to improve the app:
+1. Fork the project.
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`).
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`).
+4. Push to the branch (`git push origin feature/AmazingFeature`).
+5. Open a Pull Request.
+
+---
+*Built with ❤️ for SRMIST.*
